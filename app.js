@@ -155,14 +155,15 @@ function getSummary(year) {
 function getSeasonData(year) {
   const matches = getMatchesForYear(year);
   const summary = getSummary(year);
-  const foot = { left:0, right:0, other:0, unknown:0 };
+  const foot = { left:0, right:0, header:0, other:0, unknown:0 };
 
   matches.forEach(match => {
     (match.goalEvents || []).forEach(goal => {
       const name = (goal.foot || '').trim();
       if (name === '左脚') foot.left += 1;
       else if (name === '右脚') foot.right += 1;
-      else if (name === '头球' || name === '其他') foot.other += 1;
+      else if (name === '头球') foot.header += 1;
+      else if (name === '其他') foot.other += 1;
       else foot.unknown += 1;
     });
   });
@@ -279,14 +280,50 @@ function renderSeasonMetricDetail(season) {
   `;
 
   if (isGoals) {
+    const foot = season.foot;
+    const total = Math.max(1, season.goals);
+    const segments = [
+      { key:'left', label:'左脚', value:foot.left, cls:'foot-left' },
+      { key:'right', label:'右脚', value:foot.right, cls:'foot-right' },
+      { key:'header', label:'头球', value:foot.header, cls:'foot-header' },
+      { key:'other', label:'其他', value:foot.other, cls:'foot-other' },
+      { key:'unknown', label:'待补录', value:foot.unknown, cls:'foot-unknown' }
+    ];
+    let cursor = 0;
+    const stops = segments.map(seg => {
+      const start = cursor;
+      cursor += (seg.value / total) * 100;
+      return `var(--${seg.cls}) ${start.toFixed(3)}% ${cursor.toFixed(3)}%`;
+    }).join(', ');
+    const known = foot.left + foot.right + foot.header + foot.other + foot.unknown;
+
     mini.innerHTML += `
-      <div class="goal-foot-breakdown" aria-label="进球脚法分布">
-        <span>脚法：</span>
-        <strong>左脚 ${season.foot.left}</strong>
-        <strong>右脚 ${season.foot.right}</strong>
-        <strong>头球/其他 ${season.foot.other}</strong>
-        <strong>待补录 ${season.foot.unknown}</strong>
-      </div>
+      <section class="goal-composition-panel" aria-label="${season.year} 进球构成">
+        <div class="goal-composition-head">
+          <div>
+            <span class="metric-label">GOAL COMPOSITION</span>
+            <h4>进球构成</h4>
+          </div>
+          <span class="goal-composition-year">${season.year}</span>
+        </div>
+        <div class="goal-composition-body">
+          <div class="goal-pie-wrap">
+            <div class="goal-pie" style="background:conic-gradient(${stops})" role="img" aria-label="左脚 ${foot.left} 球，右脚 ${foot.right} 球，头球 ${foot.header} 球，其他 ${foot.other} 球，待补录 ${foot.unknown} 球">
+              <div class="goal-pie-center"><span>总进球</span><strong>${season.goals}</strong></div>
+            </div>
+            <div class="goal-pie-legend">
+              ${segments.map(seg => `<span><i class="${seg.cls}"></i>${seg.label} <strong>${seg.value}</strong></span>`).join('')}
+            </div>
+          </div>
+          <div class="goal-composition-stats">
+            <div class="goal-composition-card total"><span>总进球</span><strong>${season.goals}</strong><small>逐场比赛累计</small></div>
+            <div class="goal-composition-card"><span>左脚进球</span><strong>${foot.left}</strong><small>${season.goals ? (foot.left / season.goals * 100).toFixed(1) : '0.0'}%</small></div>
+            <div class="goal-composition-card"><span>右脚进球</span><strong>${foot.right}</strong><small>${season.goals ? (foot.right / season.goals * 100).toFixed(1) : '0.0'}%</small></div>
+            <div class="goal-composition-card"><span>头球进球</span><strong>${foot.header}</strong><small>${season.goals ? (foot.header / season.goals * 100).toFixed(1) : '0.0'}%</small></div>
+          </div>
+        </div>
+        ${(foot.other || foot.unknown || known !== season.goals) ? `<div class="goal-composition-note">其他 ${foot.other} 球 · 待补录 ${foot.unknown} 球${known !== season.goals ? ` · 当前脚法记录合计 ${known} 球` : ''}</div>` : ''}
+      </section>
     `;
   }
 }
