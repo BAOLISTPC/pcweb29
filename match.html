@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="足球比赛二级详情页" />
+  <title>比赛详情 — 暴力中锋</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="detail-body">
+  <div class="noise" aria-hidden="true"></div>
+  <main class="detail-shell">
+    <div class="detail-topbar">
+      <a class="detail-back" href="index.html#matches">← 返回比赛记录</a>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="detail-home" href="index.html#football">足球首页</a>
+        <button id="detail-theme-toggle" class="icon-button" type="button" aria-label="切换主题">◐</button>
+      </div>
+    </div>
+
+    <section id="detail-root" aria-live="polite">
+      <div class="detail-empty">正在读取比赛数据…</div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="match.js"></script>
+</body>
+</html>

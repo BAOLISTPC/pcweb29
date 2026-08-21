@@ -37,7 +37,7 @@
         </div>
       </div>
       <aside class="hero-panel reveal" aria-label="个人概览">
-        <div class="status-row"><span class="pulse"></span><span>PERSONAL ARCHIVE / V3</span></div>
+        <div class="status-row"><span class="pulse"></span><span>PERSONAL ARCHIVE / V5</span></div>
         <div class="hero-metric">
           <span class="metric-label">CURRENT FOCUS</span>
           <strong id="current-focus">Brand / Video / Football</strong>
@@ -69,8 +69,38 @@
           <p class="eyebrow">FOOTBALL ARCHIVE</p>
           <h2>足球生涯</h2>
         </div>
-        <p>按赛季记录出场、进球、助攻，并拆分每一粒进球的脚法与时间。</p>
+        <p>先看年度/月度趋势；进球与助攻可点击切换。比赛列表按月份折叠，详情进入二级页面。</p>
       </div>
+
+      <section class="football-dashboard reveal" aria-label="年度与月度足球数据图表">
+        <div class="trend-head">
+          <div>
+            <p class="metric-label">CAREER TREND</p>
+            <h3>年度 / 月度数据</h3>
+            <p class="trend-desc">先看每年总量，再切换年份查看 1–12 月表现。</p>
+          </div>
+          <div id="trend-metric-toggle" class="metric-toggle" role="group" aria-label="切换进球或助攻图表">
+            <button class="metric-toggle-btn active" type="button" data-trend-metric="goals" aria-pressed="true">进球</button>
+            <button class="metric-toggle-btn" type="button" data-trend-metric="assists" aria-pressed="false">助攻</button>
+          </div>
+        </div>
+
+        <div class="chart-label-row">
+          <span>年度表现 · 逐场相加</span>
+          <span id="yearly-chart-unit">GOALS</span>
+        </div>
+        <div id="yearly-chart" class="yearly-chart" aria-label="年度数据柱状图"></div>
+
+        <div class="monthly-chart-head">
+          <div>
+            <span class="metric-label" id="monthly-chart-kicker">MONTHLY GOALS</span>
+            <h4 id="monthly-chart-title">2026 月度进球</h4>
+          </div>
+          <div id="trend-year-switcher" class="trend-year-switcher" aria-label="切换月度图表年份"></div>
+        </div>
+        <div id="monthly-chart" class="monthly-chart" aria-label="月度数据柱状图"></div>
+        <p id="trend-note" class="trend-note"></p>
+      </section>
 
       <div class="season-layout">
         <div class="player-card reveal">
@@ -94,22 +124,27 @@
             <span class="season-badge" id="season-status">ACTIVE</span>
           </div>
           <div class="season-stats">
-            <div><span>出场</span><strong id="season-apps">0</strong></div>
-            <div><span>进球</span><strong id="season-goals">0</strong></div>
-            <div><span>助攻</span><strong id="season-assists">0</strong></div>
-            <div><span>G+A</span><strong id="season-ga">0</strong></div>
+            <div class="season-stat-static"><span>出场</span><strong id="season-apps">0</strong></div>
+            <button class="season-stat-button active" id="season-goals-button" type="button" data-season-metric="goals" aria-pressed="true">
+              <span>进球 <em>点击查看</em></span><strong id="season-goals">0</strong>
+            </button>
+            <button class="season-stat-button" id="season-assists-button" type="button" data-season-metric="assists" aria-pressed="false">
+              <span>助攻 <em>点击查看</em></span><strong id="season-assists">0</strong>
+            </button>
+            <div class="season-stat-static"><span>G+A</span><strong id="season-ga">0</strong></div>
           </div>
-          <div class="scoring-profile">
+          <div class="scoring-profile" id="season-detail-panel">
             <div class="scoring-profile-head">
-              <span class="metric-label">SCORING PROFILE</span>
-              <span>进球脚法</span>
+              <span class="metric-label" id="season-detail-kicker">GOAL PROFILE</span>
+              <span id="season-detail-title">进球脚法</span>
             </div>
-            <div class="foot-stats">
+            <div class="foot-stats" id="season-detail-stats">
               <div><span>左脚</span><strong id="foot-left">0</strong></div>
               <div><span>右脚</span><strong id="foot-right">0</strong></div>
               <div><span>头球/其他</span><strong id="foot-other">0</strong></div>
               <div><span>待补录</span><strong id="foot-unknown">0</strong></div>
             </div>
+            <div id="season-assist-monthly" class="season-assist-monthly" hidden></div>
           </div>
           <p id="season-note" class="season-note"></p>
         </div>
@@ -122,10 +157,10 @@
           <p class="eyebrow">MATCH LOG</p>
           <h2>比赛记录</h2>
         </div>
-        <p>记录比赛日期、时间、地点、位置，以及每一粒进球的脚法与分钟。</p>
+        <p>一级页只保留日期、地点、进球和助攻；点进二级页面查看比赛信息、逐球记录与匹配视频。</p>
       </div>
-      <div id="match-filters" class="filters match-filters reveal" aria-label="比赛年份筛选"></div>
-      <div id="match-grid" class="match-grid"></div>
+      <div class="match-filter-row reveal"><div id="match-filters" class="filters match-filters" aria-label="比赛年份筛选"></div><p id="match-summary-note" class="match-summary-note"></p></div>
+      <div id="match-grid" class="match-grid month-groups"></div>
     </section>
 
     <section id="videos" class="section">
