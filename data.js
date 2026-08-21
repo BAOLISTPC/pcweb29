@@ -1,5 +1,5 @@
 /*
-  足球数据 V6 — 以用户最新比赛记录为基础
+  足球数据 V7 — 以用户最新比赛记录为基础
 
   V6 更新：
   - 球员姓名固定为“暴力中锋”。
@@ -12,24 +12,25 @@
 window.SITE_DATA = {
   "profile": {
     "name": "暴力中锋",
-    "brand": "MY ARCHIVE",
-    "heroKicker": "WORK / FOOTBALL / LIFE",
-    "heroTitle": "把做过的事，\n和踢过的球都留下来。",
-    "heroDesc": "个人作品、比赛、进球与视频的长期数字档案。",
-    "currentFocus": "Brand / Video / Football",
+    "brand": "PC的网站",
+    "heroKicker": "PERSONAL WEBSITE",
+    "heroTitle": "生活 · 足球 · 工作",
+    "heroDesc": "把生活的片段、球场的记录和做过的作品，留在一个长期更新的网站里。",
+    "currentFocus": "生活 / 足球 / 工作",
     "footballPositions": "RW · LW · ST",
     "footballStyle": "RUN / CROSS / FINISH",
     "number": "—",
-    "aboutTitle": "这是我的长期个人档案。",
-    "aboutText": "足球数据按逐场比赛相加生成年度/月度统计；进球与助攻均支持点击查看详细赛季统计。比赛二级页用于记录逐球信息与对应视频；原记录没有提供的时间不做推测。",
+    "aboutTitle": "献给自己。",
+    "aboutText": "这是一段经历，是一段回忆，致敬过去的自己，献给未来的自己。",
     "links": [
       {
         "label": "GitHub",
-        "url": "https://github.com/"
+        "url": "https://github.com/BAOLISTPC"
       },
       {
         "label": "Bilibili",
-        "url": "#"
+        "url": "https://search.bilibili.com/upuser?keyword=%E6%9A%B4%E5%8A%9B%E4%B8%AD%E9%94%8B%E9%B8%AD%E5%98%B4%E5%85%BD",
+        "kind": "bilibili"
       },
       {
         "label": "Email",
@@ -3705,7 +3706,18 @@ window.SITE_DATA = {
       "videoUrl": ""
     }
   ],
+  "lifeItems": [],
+  "watchItems": [],
   "videos": [
+    {
+      "title": "2025-2026.1 进球集锦",
+      "date": "2025",
+      "time": "",
+      "type": "年度进球集锦",
+      "url": "https://www.bilibili.com/video/BV1sD8q6ZEwd/?share_source=copy_web&vd_source=124021f804d63c366dc1dc1522781c38",
+      "location": "",
+      "standalone": true
+    },
     {
       "title": "2026-07-22 石鼓八人",
       "date": "2026-07-22",

@@ -48,6 +48,7 @@ function findMatchingVideos(match) {
   const key = matchKey(match);
   const matchRange = parseTimeRange(match.time);
   return videos.filter(video => {
+    if (video.standalone) return false;
     if (video.matchKey && video.matchKey === key) return true;
     if (!video.date || video.date !== match.date) return false;
     const videoRange = parseTimeRange(video.time);
@@ -106,7 +107,7 @@ function render(match) {
   const goalEvents = match.goalEvents || [];
   const videos = findMatchingVideos(match);
 
-  document.title = `${match.date} ${match.event} — 暴力中锋`;
+  document.title = `${match.date} ${match.event} — PC的网站`;
 
   root.innerHTML = `
     <section class="detail-hero">

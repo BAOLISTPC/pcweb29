@@ -33,7 +33,7 @@ function matchDetailUrl(match) {
 
 function initProfile() {
   const p = data.profile;
-  document.title = `${p.name} — Work & Football`;
+  document.title = p.brand || "PC的网站";
   setText('#brand-name', p.brand);
   setText('#hero-kicker', p.heroKicker);
   $('#hero-title').innerHTML = p.heroTitle.replace(/\n/g, '<br>');
@@ -49,7 +49,37 @@ function initProfile() {
   setText('#year', new Date().getFullYear());
 
   const links = $('#social-links');
-  links.innerHTML = p.links.map(link => `<a href="${link.url}" target="_blank" rel="noreferrer">${link.label} ↗</a>`).join('');
+  links.innerHTML = p.links.map(link => {
+    const icon = link.kind === 'bilibili' ? '<span class="mini-bili-icon">B</span>' : '';
+    return `<a href="${link.url}" target="_blank" rel="noreferrer">${icon}${link.label} ↗</a>`;
+  }).join('');
+
+  const bili = p.links.find(link => link.kind === 'bilibili' || link.label === 'Bilibili');
+  const biliButton = $('#bilibili-link');
+  if (bili && biliButton) biliButton.href = bili.url;
+}
+
+function renderArchiveMedia(items, selector, kind) {
+  const grid = $(selector);
+  if (!grid) return;
+  if (!items || !items.length) {
+    const copy = kind === 'life'
+      ? ['旅行', '出去玩', '日常照片']
+      : ['现场看球', '球场照片', '观赛视频'];
+    grid.innerHTML = copy.map((title, index) => `
+      <article class="archive-media-card placeholder reveal">
+        <div class="archive-media-index">0${index + 1}</div>
+        <div class="archive-media-copy"><span>${kind === 'life' ? 'LIFE' : 'MATCHDAY'}</span><h3>${title}</h3><p>待上传 · 之后可添加照片、视频、日期和地点</p></div>
+      </article>
+    `).join('');
+    return;
+  }
+  grid.innerHTML = items.map((item, index) => `
+    <a class="archive-media-card reveal" href="${item.url || '#'}" ${item.url ? 'target="_blank" rel="noreferrer"' : ''}>
+      ${item.image ? `<img src="${item.image}" alt="${item.title || ''}" />` : `<div class="archive-media-index">${String(index + 1).padStart(2,'0')}</div>`}
+      <div class="archive-media-copy"><span>${item.date || item.type || ''}</span><h3>${item.title || '未命名记录'}</h3><p>${[item.location, item.note].filter(Boolean).join(' · ') || '个人记录'}</p></div>
+    </a>
+  `).join('');
 }
 
 function renderWorks(filter = '全部') {
@@ -502,6 +532,8 @@ function initReveal() {
 
 function init() {
   initProfile();
+  renderArchiveMedia(data.lifeItems, '#life-grid', 'life');
+  renderArchiveMedia(data.watchItems, '#watch-grid', 'watch');
   initWorkFilters();
   renderWorks();
   renderAttributes();
