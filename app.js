@@ -139,11 +139,18 @@ function getSeasonData(year) {
 
   const detailedGoals = getDetailedAnnualValue(year, 'goals');
   const detailedAssists = getDetailedAnnualValue(year, 'assists');
+
+  const goalMatches = matches.filter(m => Number(m.goals || 0) > 0);
+  const maxGoal = goalMatches.length ? Math.max(...goalMatches.map(m => Number(m.goals || 0))) : 0;
+  const monthlyGoals = getMonthlyValues(year, 'goals');
+  const maxMonthGoal = Math.max(0, ...monthlyGoals);
+  const maxGoalMonthIndex = monthlyGoals.indexOf(maxMonthGoal);
+
   const assistMatches = matches.filter(m => Number(m.assists || 0) > 0);
   const maxAssist = assistMatches.length ? Math.max(...assistMatches.map(m => Number(m.assists || 0))) : 0;
   const monthlyAssists = getMonthlyValues(year, 'assists');
   const maxMonthAssist = Math.max(0, ...monthlyAssists);
-  const maxMonthIndex = monthlyAssists.indexOf(maxMonthAssist);
+  const maxAssistMonthIndex = monthlyAssists.indexOf(maxMonthAssist);
 
   let note = `按逐场比赛相加：${detailedGoals} 球 ${detailedAssists} 助攻。`;
   if (summary) {
@@ -163,11 +170,18 @@ function getSeasonData(year) {
     ga:detailedGoals + detailedAssists,
     note,
     foot,
+    goalProfile: {
+      total:detailedGoals,
+      matches:goalMatches.length,
+      max:maxGoal,
+      bestMonth:maxMonthGoal > 0 ? `${maxGoalMonthIndex + 1}月 · ${maxMonthGoal}` : '—',
+      monthly:monthlyGoals
+    },
     assistProfile: {
       total:detailedAssists,
       matches:assistMatches.length,
       max:maxAssist,
-      bestMonth:maxMonthAssist > 0 ? `${maxMonthIndex + 1}月 · ${maxMonthAssist}` : '—',
+      bestMonth:maxMonthAssist > 0 ? `${maxAssistMonthIndex + 1}月 · ${maxMonthAssist}` : '—',
       monthly:monthlyAssists
     }
   };
@@ -195,7 +209,7 @@ function renderSeasonButtons() {
 
 function renderSeasonMetricDetail(season) {
   const stats = $('#season-detail-stats');
-  const mini = $('#season-assist-monthly');
+  const mini = $('#season-metric-monthly');
   const goalBtn = $('#season-goals-button');
   const assistBtn = $('#season-assists-button');
 
@@ -205,39 +219,43 @@ function renderSeasonMetricDetail(season) {
     btn.setAttribute('aria-pressed', String(active));
   });
 
-  if (activeSeasonMetric === 'goals') {
-    setText('#season-detail-kicker', 'GOAL PROFILE');
-    setText('#season-detail-title', '进球脚法');
-    stats.hidden = false;
-    mini.hidden = true;
-    stats.innerHTML = `
-      <div><span>左脚</span><strong>${season.foot.left}</strong></div>
-      <div><span>右脚</span><strong>${season.foot.right}</strong></div>
-      <div><span>头球/其他</span><strong>${season.foot.other}</strong></div>
-      <div><span>待补录</span><strong>${season.foot.unknown}</strong></div>
-    `;
-  } else {
-    setText('#season-detail-kicker', 'ASSIST PROFILE');
-    setText('#season-detail-title', '助攻表现');
-    stats.hidden = false;
-    stats.innerHTML = `
-      <div><span>赛季助攻</span><strong>${season.assistProfile.total}</strong></div>
-      <div><span>有助攻场次</span><strong>${season.assistProfile.matches}</strong></div>
-      <div><span>单场最高</span><strong>${season.assistProfile.max}</strong></div>
-      <div><span>最多月份</span><strong class="text-stat">${season.assistProfile.bestMonth}</strong></div>
-    `;
-    mini.hidden = false;
-    const maxValue = Math.max(1, ...season.assistProfile.monthly);
-    mini.innerHTML = `
-      <div class="assist-mini-title">${season.year} 月度助攻</div>
-      <div class="assist-mini-bars">
-        ${season.assistProfile.monthly.map((value, i) => `
-          <div class="assist-mini-item" title="${i + 1}月：${value} 助攻">
-            <span class="assist-mini-value">${value}</span>
-            <div class="assist-mini-track"><i style="height:${value === 0 ? 2 : Math.max(8, value / maxValue * 100)}%"></i></div>
-            <small>${i + 1}月</small>
-          </div>
-        `).join('')}
+  const isGoals = activeSeasonMetric === 'goals';
+  const profile = isGoals ? season.goalProfile : season.assistProfile;
+  const label = isGoals ? '进球' : '助攻';
+
+  setText('#season-detail-kicker', isGoals ? 'GOAL PROFILE' : 'ASSIST PROFILE');
+  setText('#season-detail-title', isGoals ? '进球表现' : '助攻表现');
+  stats.hidden = false;
+  stats.innerHTML = `
+    <div><span>赛季${label}</span><strong>${profile.total}</strong></div>
+    <div><span>有${label}场次</span><strong>${profile.matches}</strong></div>
+    <div><span>单场最高</span><strong>${profile.max}</strong></div>
+    <div><span>最多月份</span><strong class="text-stat">${profile.bestMonth}</strong></div>
+  `;
+
+  mini.hidden = false;
+  const maxValue = Math.max(1, ...profile.monthly);
+  mini.innerHTML = `
+    <div class="assist-mini-title">${season.year} 月度${label}</div>
+    <div class="assist-mini-bars">
+      ${profile.monthly.map((value, i) => `
+        <div class="assist-mini-item" title="${i + 1}月：${value} ${label}">
+          <span class="assist-mini-value">${value}</span>
+          <div class="assist-mini-track"><i style="height:${value === 0 ? 2 : Math.max(8, value / maxValue * 100)}%"></i></div>
+          <small>${i + 1}月</small>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  if (isGoals) {
+    mini.innerHTML += `
+      <div class="goal-foot-breakdown" aria-label="进球脚法分布">
+        <span>脚法：</span>
+        <strong>左脚 ${season.foot.left}</strong>
+        <strong>右脚 ${season.foot.right}</strong>
+        <strong>头球/其他 ${season.foot.other}</strong>
+        <strong>待补录 ${season.foot.unknown}</strong>
       </div>
     `;
   }
