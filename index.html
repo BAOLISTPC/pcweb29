@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="个人作品集、足球比赛记录与视频档案" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>My Archive — Work & Football</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="回到首页">
+      <span class="brand-mark">X</span>
+      <span id="brand-name">MY ARCHIVE</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#work">作品</a>
+      <a href="#football">足球</a>
+      <a href="#matches">比赛</a>
+      <a href="#videos">视频</a>
+      <a href="#about">关于</a>
+    </nav>
+    <button id="theme-toggle" class="icon-button" type="button" aria-label="切换主题">◐</button>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" id="hero-kicker">WORK / FOOTBALL / LIFE</p>
+        <h1 id="hero-title">把做过的事，<br />和踢过的球都留下来。</h1>
+        <p class="hero-desc" id="hero-desc">一个属于自己的数字档案馆：作品、比赛、数据与视频。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">查看作品</a>
+          <a class="button ghost" href="#football">进入足球档案</a>
+        </div>
+      </div>
+      <aside class="hero-panel reveal" aria-label="个人概览">
+        <div class="status-row"><span class="pulse"></span><span>PERSONAL ARCHIVE / V1</span></div>
+        <div class="hero-metric">
+          <span class="metric-label">CURRENT FOCUS</span>
+          <strong id="current-focus">Brand / Video / Football</strong>
+        </div>
+        <div class="mini-grid">
+          <div><span>WORKS</span><strong id="hero-work-count">0</strong></div>
+          <div><span>MATCHES</span><strong id="hero-match-count">0</strong></div>
+          <div><span>GOALS</span><strong id="hero-goals">0</strong></div>
+          <div><span>ASSISTS</span><strong id="hero-assists">0</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="work" class="section block-section">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">SELECTED WORK</p>
+          <h2>作品集</h2>
+        </div>
+        <p>把最能代表你的项目放在这里。点击分类筛选。</p>
+      </div>
+      <div id="work-filters" class="filters reveal" aria-label="作品筛选"></div>
+      <div id="work-grid" class="work-grid"></div>
+    </section>
+
+    <section id="football" class="section football-section">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">FOOTBALL ARCHIVE</p>
+          <h2>足球生涯</h2>
+        </div>
+        <p>按赛季记录出场、进球、助攻与个人表现。</p>
+      </div>
+
+      <div class="season-layout">
+        <div class="player-card reveal">
+          <div class="player-topline"><span>PLAYER PROFILE</span><span id="player-number">—</span></div>
+          <div class="player-name" id="player-name">YOUR NAME</div>
+          <div class="player-position" id="player-position">RW · LW · ST</div>
+          <div class="rating-row">
+            <span>STYLE</span>
+            <strong id="player-style">RUN / CROSS / FINISH</strong>
+          </div>
+          <div id="attributes" class="attributes"></div>
+        </div>
+
+        <div class="season-panel reveal">
+          <div class="season-switcher" id="season-switcher"></div>
+          <div class="season-title-row">
+            <div>
+              <span class="metric-label">SEASON</span>
+              <h3 id="season-title">2026</h3>
+            </div>
+            <span class="season-badge" id="season-status">ACTIVE</span>
+          </div>
+          <div class="season-stats">
+            <div><span>出场</span><strong id="season-apps">0</strong></div>
+            <div><span>进球</span><strong id="season-goals">0</strong></div>
+            <div><span>助攻</span><strong id="season-assists">0</strong></div>
+            <div><span>G+A</span><strong id="season-ga">0</strong></div>
+          </div>
+          <p id="season-note" class="season-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="matches" class="section block-section">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">MATCH LOG</p>
+          <h2>比赛记录</h2>
+        </div>
+        <p>每踢一场，就多一条属于自己的记录。</p>
+      </div>
+      <div id="match-grid" class="match-grid"></div>
+    </section>
+
+    <section id="videos" class="section">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">VIDEO ROOM</p>
+          <h2>踢球视频</h2>
+        </div>
+        <p>建议视频本体放 Bilibili / YouTube / 云存储，网站只放封面和链接。</p>
+      </div>
+      <div id="video-grid" class="video-grid"></div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="about-card reveal">
+        <p class="eyebrow">ABOUT</p>
+        <h2 id="about-title">这是我的长期个人档案。</h2>
+        <p id="about-text">工作上记录作品，球场上记录每一场比赛。网站会随着时间持续更新。</p>
+        <div id="social-links" class="social-links"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> <span id="footer-name">MY ARCHIVE</span></span>
+    <span>Built for GitHub Pages.</span>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
