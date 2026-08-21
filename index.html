@@ -37,7 +37,7 @@
         </div>
       </div>
       <aside class="hero-panel reveal" aria-label="个人概览">
-        <div class="status-row"><span class="pulse"></span><span>PERSONAL ARCHIVE / V1</span></div>
+        <div class="status-row"><span class="pulse"></span><span>PERSONAL ARCHIVE / V3</span></div>
         <div class="hero-metric">
           <span class="metric-label">CURRENT FOCUS</span>
           <strong id="current-focus">Brand / Video / Football</strong>
@@ -69,7 +69,7 @@
           <p class="eyebrow">FOOTBALL ARCHIVE</p>
           <h2>足球生涯</h2>
         </div>
-        <p>按赛季记录出场、进球、助攻与个人表现。</p>
+        <p>按赛季记录出场、进球、助攻，并拆分每一粒进球的脚法与时间。</p>
       </div>
 
       <div class="season-layout">
@@ -99,6 +99,18 @@
             <div><span>助攻</span><strong id="season-assists">0</strong></div>
             <div><span>G+A</span><strong id="season-ga">0</strong></div>
           </div>
+          <div class="scoring-profile">
+            <div class="scoring-profile-head">
+              <span class="metric-label">SCORING PROFILE</span>
+              <span>进球脚法</span>
+            </div>
+            <div class="foot-stats">
+              <div><span>左脚</span><strong id="foot-left">0</strong></div>
+              <div><span>右脚</span><strong id="foot-right">0</strong></div>
+              <div><span>头球/其他</span><strong id="foot-other">0</strong></div>
+              <div><span>待补录</span><strong id="foot-unknown">0</strong></div>
+            </div>
+          </div>
           <p id="season-note" class="season-note"></p>
         </div>
       </div>
@@ -110,8 +122,9 @@
           <p class="eyebrow">MATCH LOG</p>
           <h2>比赛记录</h2>
         </div>
-        <p>每踢一场，就多一条属于自己的记录。</p>
+        <p>记录比赛日期、时间、地点、位置，以及每一粒进球的脚法与分钟。</p>
       </div>
+      <div id="match-filters" class="filters match-filters reveal" aria-label="比赛年份筛选"></div>
       <div id="match-grid" class="match-grid"></div>
     </section>
 
