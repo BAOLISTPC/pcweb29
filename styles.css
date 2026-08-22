@@ -1008,4 +1008,142 @@ button { font: inherit; }
 }
 
 .social-icon-button svg { width:20px; height:20px; display:block; }
-\n\n/* ---------- V7.1 / Goal composition pie ---------- */\n:root {\n  --foot-left: #64805a;\n  --foot-right: #9DBB92;\n  --foot-header: #c9d9c2;\n  --foot-other: #111111;\n  --foot-unknown: #deded8;\n}\n[data-theme="dark"] {\n  --foot-left: #b5cfa9;\n  --foot-right: #78966d;\n  --foot-header: #d9e6d3;\n  --foot-other: #f3f3ef;\n  --foot-unknown: #4a4a45;\n}\n.goal-composition-panel {\n  margin-top: 26px;\n  padding-top: 24px;\n  border-top: 1px solid var(--line);\n}\n.goal-composition-head {\n  display:flex;\n  align-items:flex-end;\n  justify-content:space-between;\n  gap:18px;\n  margin-bottom:20px;\n}\n.goal-composition-head h4 {\n  margin:2px 0 0;\n  font-size:22px;\n  letter-spacing:-.04em;\n}\n.goal-composition-year {\n  color:var(--muted);\n  font-size:11px;\n  letter-spacing:.12em;\n}\n.goal-composition-body {\n  display:grid;\n  grid-template-columns:minmax(250px,.82fr) minmax(360px,1.18fr);\n  gap:24px;\n  align-items:center;\n}\n.goal-pie-wrap {\n  display:grid;\n  grid-template-columns:190px minmax(120px,1fr);\n  gap:22px;\n  align-items:center;\n  min-height:210px;\n  padding:18px;\n  border:1px solid var(--line);\n  border-radius:22px;\n  background:color-mix(in srgb, var(--green-soft) 30%, var(--panel));\n}\n.goal-pie {\n  width:180px;\n  aspect-ratio:1;\n  border-radius:50%;\n  display:grid;\n  place-items:center;\n  box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--line) 60%, transparent);\n  transition:transform .2s ease;\n}\n.goal-pie:hover { transform:scale(1.025); }\n.goal-pie-center {\n  width:104px;\n  aspect-ratio:1;\n  border-radius:50%;\n  display:flex;\n  flex-direction:column;\n  align-items:center;\n  justify-content:center;\n  background:var(--panel);\n  border:1px solid var(--line);\n  box-shadow:0 10px 28px rgba(0,0,0,.06);\n}\n.goal-pie-center span { color:var(--muted); font-size:10px; letter-spacing:.08em; }\n.goal-pie-center strong { margin-top:2px; font-size:38px; line-height:1; letter-spacing:-.06em; }\n.goal-pie-legend { display:grid; gap:9px; }\n.goal-pie-legend span { display:grid; grid-template-columns:10px 1fr auto; gap:8px; align-items:center; color:var(--muted); font-size:11px; }\n.goal-pie-legend i { width:9px; height:9px; border-radius:50%; }\n.goal-pie-legend strong { color:var(--text); font-size:12px; }\n.goal-pie-legend i.foot-left { background:var(--foot-left); }\n.goal-pie-legend i.foot-right { background:var(--foot-right); }\n.goal-pie-legend i.foot-header { background:var(--foot-header); border:1px solid color-mix(in srgb, var(--green-deep) 35%, transparent); }\n.goal-pie-legend i.foot-other { background:var(--foot-other); }\n.goal-pie-legend i.foot-unknown { background:var(--foot-unknown); }\n.goal-composition-stats {\n  display:grid;\n  grid-template-columns:repeat(2,minmax(0,1fr));\n  gap:10px;\n}\n.goal-composition-card {\n  min-height:104px;\n  padding:16px 18px;\n  border:1px solid var(--line);\n  border-radius:18px;\n  background:var(--panel-2);\n  position:relative;\n  overflow:hidden;\n}\n.goal-composition-card::after {\n  content:"";\n  position:absolute;\n  width:70px; height:70px;\n  right:-30px; bottom:-35px;\n  border-radius:50%;\n  background:color-mix(in srgb, var(--green) 34%, transparent);\n}\n.goal-composition-card.total { background:var(--green); color:#111; border-color:var(--green); }\n.goal-composition-card span { display:block; font-size:11px; color:var(--muted); }\n.goal-composition-card.total span, .goal-composition-card.total small { color:rgba(17,17,17,.62); }\n.goal-composition-card strong { display:block; margin-top:5px; font-size:32px; line-height:1; letter-spacing:-.05em; }\n.goal-composition-card small { display:block; margin-top:7px; color:var(--muted); font-size:10px; }\n.goal-composition-note { margin-top:12px; color:var(--muted); font-size:11px; line-height:1.6; }\n\n@media (max-width: 900px) {\n  .goal-composition-body { grid-template-columns:1fr; }\n}\n@media (max-width: 560px) {\n  .goal-pie-wrap { grid-template-columns:1fr; justify-items:center; }\n  .goal-pie-legend { width:100%; }\n  .goal-composition-stats { grid-template-columns:1fr 1fr; }\n}\n
+
+
+/* ---------- V7.1 / Goal composition pie ---------- */
+:root {
+  --foot-left: #64805a;
+  --foot-right: #9DBB92;
+  --foot-header: #c9d9c2;
+  --foot-other: #111111;
+  --foot-unknown: #deded8;
+}
+[data-theme="dark"] {
+  --foot-left: #b5cfa9;
+  --foot-right: #78966d;
+  --foot-header: #d9e6d3;
+  --foot-other: #f3f3ef;
+  --foot-unknown: #4a4a45;
+}
+.goal-composition-panel {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.goal-composition-head {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:20px;
+}
+.goal-composition-head h4 {
+  margin:2px 0 0;
+  font-size:22px;
+  letter-spacing:-.04em;
+}
+.goal-composition-year {
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.12em;
+}
+.goal-composition-body {
+  display:grid;
+  grid-template-columns:minmax(250px,.82fr) minmax(360px,1.18fr);
+  gap:24px;
+  align-items:center;
+}
+.goal-pie-wrap {
+  display:grid;
+  grid-template-columns:190px minmax(120px,1fr);
+  gap:22px;
+  align-items:center;
+  min-height:210px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:color-mix(in srgb, var(--green-soft) 30%, var(--panel));
+}
+.goal-pie {
+  width:180px;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--line) 60%, transparent);
+  transition:transform .2s ease;
+}
+.goal-pie:hover { transform:scale(1.025); }
+.goal-pie-center {
+  width:104px;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:var(--panel);
+  border:1px solid var(--line);
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
+}
+.goal-pie-center span { color:var(--muted); font-size:10px; letter-spacing:.08em; }
+.goal-pie-center strong { margin-top:2px; font-size:38px; line-height:1; letter-spacing:-.06em; }
+.goal-pie-legend { display:grid; gap:9px; }
+.goal-pie-legend span { display:grid; grid-template-columns:10px 1fr auto; gap:8px; align-items:center; color:var(--muted); font-size:11px; }
+.goal-pie-legend i { width:9px; height:9px; border-radius:50%; }
+.goal-pie-legend strong { color:var(--text); font-size:12px; }
+.goal-pie-legend i.foot-left { background:var(--foot-left); }
+.goal-pie-legend i.foot-right { background:var(--foot-right); }
+.goal-pie-legend i.foot-header { background:var(--foot-header); border:1px solid color-mix(in srgb, var(--green-deep) 35%, transparent); }
+.goal-pie-legend i.foot-other { background:var(--foot-other); }
+.goal-pie-legend i.foot-unknown { background:var(--foot-unknown); }
+.goal-composition-stats {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.goal-composition-card {
+  min-height:104px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--panel-2);
+  position:relative;
+  overflow:hidden;
+}
+.goal-composition-card::after {
+  content:"";
+  position:absolute;
+  width:70px; height:70px;
+  right:-30px; bottom:-35px;
+  border-radius:50%;
+  background:color-mix(in srgb, var(--green) 34%, transparent);
+}
+.goal-composition-card.total { background:var(--green); color:#111; border-color:var(--green); }
+.goal-composition-card span { display:block; font-size:11px; color:var(--muted); }
+.goal-composition-card.total span, .goal-composition-card.total small { color:rgba(17,17,17,.62); }
+.goal-composition-card strong { display:block; margin-top:5px; font-size:32px; line-height:1; letter-spacing:-.05em; }
+.goal-composition-card small { display:block; margin-top:7px; color:var(--muted); font-size:10px; }
+.goal-composition-note { margin-top:12px; color:var(--muted); font-size:11px; line-height:1.6; }
+
+@media (max-width: 900px) {
+  .goal-composition-body { grid-template-columns:1fr; }
+}
+@media (max-width: 560px) {
+  .goal-pie-wrap { grid-template-columns:1fr; justify-items:center; }
+  .goal-pie-legend { width:100%; }
+  .goal-composition-stats { grid-template-columns:1fr 1fr; }
+}
+
+
+/* ---------- V7.2 / Pie chart visibility fix ---------- */
+.goal-pie {
+  min-width: 180px;
+  min-height: 180px;
+  flex: 0 0 180px;
+}
+.goal-pie-wrap { overflow: visible; }
+.goal-composition-panel { display:block; }
+@supports not (background: conic-gradient(#000 0 50%, #fff 50% 100%)) {
+  .goal-pie { background: var(--green) !important; }
+}
