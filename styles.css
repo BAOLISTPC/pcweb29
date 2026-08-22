@@ -1300,3 +1300,58 @@ button { font: inherit; }
   .season-title-actions { flex-direction:row; align-items:center; justify-content:space-between; }
   .season-report-link { flex:1; min-width:0; }
 }
+
+/* V8.2 — 游戏二级分类 */
+.game-subtabs {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:-12px 0 18px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.game-subtab {
+  display:flex;
+  flex-direction:column;
+  min-width:132px;
+  gap:4px;
+  padding:13px 16px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--panel);
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.game-subtab:hover { transform:translateY(-2px); border-color:var(--green); }
+.game-subtab span { font-size:9px; letter-spacing:.14em; color:var(--muted); }
+.game-subtab strong { font-size:20px; letter-spacing:-.03em; }
+.game-subtab.active { background:var(--green); border-color:var(--green); color:#111; }
+.game-subtab.active span { color:rgba(17,17,17,.62); }
+.game-category-intro {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  margin:0 0 22px;
+}
+.game-category-intro span { font-size:10px; letter-spacing:.14em; color:var(--green-deep); }
+.game-category-intro p { margin:0; max-width:620px; color:var(--muted); line-height:1.6; }
+.game-card-placeholder { position:relative; align-content:center; gap:12px; }
+.game-card-placeholder .game-play {
+  display:grid;
+  place-items:center;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:var(--green);
+  color:#111;
+  font-size:18px;
+  letter-spacing:0;
+}
+.game-card-placeholder span:last-child { font-size:10px; letter-spacing:.14em; color:var(--green-deep); }
+.game-media-card { transition:transform .2s ease,border-color .2s ease; }
+.game-media-card:hover { transform:translateY(-3px); border-color:var(--green); }
+@media (max-width:700px) {
+  .game-subtab { min-width:104px; flex:1; }
+  .game-category-intro { display:block; }
+  .game-category-intro p { margin-top:8px; }
+}

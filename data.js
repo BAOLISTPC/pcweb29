@@ -1,5 +1,5 @@
 /*
-  足球数据 V8 — 以用户最新比赛记录为基础
+  足球数据 V8.2 — 以用户最新比赛记录为基础
 
   V6 更新：
   - 球员姓名固定为“暴力中锋”。
@@ -34,7 +34,7 @@ window.SITE_DATA = {
       },
       {
         "label": "Bilibili",
-        "url": "https://search.bilibili.com/upuser?keyword=%E6%9A%B4%E5%8A%9B%E4%B8%AD%E9%94%8B%E9%B8%AD%E5%98%B4%E5%85%BD",
+        "url": "https://b23.tv/TLqr4P5",
         "kind": "bilibili"
       },
       {
@@ -3720,10 +3720,21 @@ window.SITE_DATA = {
   ],
   "games": {
     "sections": [
-      {"id":"cs","title":"CS","subtitle":"竞技 / 对局 / 成就","description":"用于收录 CS 系列截图、精彩对局、段位与个人成就。"},
+      {"id":"cs","title":"CS","subtitle":"竞技 / 对局 / 成就","description":"CS 视频按 5K、4K、刀&电继续细分；后续也可以加入截图、段位和战绩。"},
       {"id":"aaa","title":"3A","subtitle":"剧情 / 探索 / 收藏","description":"用于收录 3A 游戏截图、通关记录、奖杯成就与视频。"}
     ],
-    "items": []
+    "categories": [
+      {"id":"5k","section":"cs","title":"5K","subtitle":"ACE / 五杀","description":"完整五杀或单回合五杀记录。"},
+      {"id":"4k","section":"cs","title":"4K","subtitle":"FOUR KILLS / 四杀","description":"四杀片段与残局收割记录。"},
+      {"id":"knife-electric","section":"cs","title":"刀&电","subtitle":"KNIFE / ZEUS","description":"刀杀、电击枪以及非常规武器的精彩片段。"}
+    ],
+    "items": [
+      {"section":"cs","category":"knife-electric","type":"刀&电","title":"14s速通沙二","videoUrl":"https://www.bilibili.com/video/BV1zsKmzAExW/","note":"CS · 刀&电分类"},
+      {"section":"cs","category":"knife-electric","type":"刀&电","title":"这种局务必多来","videoUrl":"https://www.bilibili.com/video/BV1hsJcz9ErE/","note":"CS · 刀&电分类"},
+      {"section":"cs","category":"knife-electric","type":"刀&电","title":"沙二忍者","videoUrl":"https://www.bilibili.com/video/BV1sS9oY5EAx/","note":"CS · 刀&电分类"},
+      {"section":"cs","category":"knife-electric","type":"刀&电","title":"大厨进场收割战场","videoUrl":"https://www.bilibili.com/video/BV1iPdfY6EhQ/","note":"CS · 刀&电分类"},
+      {"section":"cs","category":"5k","type":"5K","title":"朋友说一秒都不用剪","videoUrl":"https://www.bilibili.com/video/BV1HhRzYtE9e/","note":"CS · 5K 分类"}
+    ]
   },
   "lifeItems": [],
   "watchItems": [],
@@ -3742,9 +3753,25 @@ window.SITE_DATA = {
       "date": "2026-07-22",
       "time": "未记录",
       "type": "八人制比赛视频",
-      "url": "https://www.bilibili.com/video/BV1j48q6LEY9/?share_source=copy_web&vd_source=124021f804d63c366dc1dc1522781c38",
+      "url": "https://www.bilibili.com/video/BV1j48q6LEY9/",
       "location": "石鼓",
       "matchKey": "2026-07-22|石鼓八人"
+    },
+    {
+      "title": "2026-08-12 百旺八人",
+      "date": "2026-08-12",
+      "time": "未记录",
+      "type": "八人制比赛视频",
+      "url": "https://www.bilibili.com/video/BV1ue8y6XEJt/",
+      "location": "百旺"
+    },
+    {
+      "title": "2026-08-18 百旺八人",
+      "date": "2026-08-18",
+      "time": "未记录",
+      "type": "八人制比赛视频",
+      "url": "https://www.bilibili.com/video/BV1ge8y69EsJ/",
+      "location": "百旺"
     }
   ]
 };
