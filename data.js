@@ -1,5 +1,5 @@
 /*
-  足球数据 V7 — 以用户最新比赛记录为基础
+  足球数据 V8 — 以用户最新比赛记录为基础
 
   V6 更新：
   - 球员姓名固定为“暴力中锋”。
@@ -20,6 +20,11 @@ window.SITE_DATA = {
     "footballPositions": "RW · LW · ST",
     "footballStyle": "RUN / CROSS / FINISH",
     "number": "—",
+    "positionRatings": [
+      {"position":"RW","label":"右边锋","rating":84,"x":75,"y":23},
+      {"position":"ST","label":"中锋","rating":82,"x":50,"y":16},
+      {"position":"LW","label":"左边锋","rating":83,"x":25,"y":23}
+    ],
     "aboutTitle": "献给自己。",
     "aboutText": "这是一段经历，是一段回忆，致敬过去的自己，献给未来的自己。",
     "links": [
@@ -3706,6 +3711,13 @@ window.SITE_DATA = {
       "videoUrl": ""
     }
   ],
+  "games": {
+    "sections": [
+      {"id":"cs","title":"CS","subtitle":"竞技 / 对局 / 成就","description":"用于收录 CS 系列截图、精彩对局、段位与个人成就。"},
+      {"id":"aaa","title":"3A","subtitle":"剧情 / 探索 / 收藏","description":"用于收录 3A 游戏截图、通关记录、奖杯成就与视频。"}
+    ],
+    "items": []
+  },
   "lifeItems": [],
   "watchItems": [],
   "videos": [

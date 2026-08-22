@@ -6,7 +6,7 @@
   <meta name="description" content="PC的网站：生活、足球与工作长期个人档案" />
   <meta name="theme-color" content="#9DBB92" />
   <title>PC的网站</title>
-  <link rel="stylesheet" href="styles.css?v=7.2.0.0" />
+  <link rel="stylesheet" href="styles.css?v=8.0.0" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -20,6 +20,7 @@
       <a href="#football">足球</a>
       <a href="#watching">看球</a>
       <a href="#work">工作</a>
+      <a href="games.html">游戏</a>
       <a href="#matches">比赛</a>
       <a href="#videos">视频</a>
       <a href="#about">关于</a>
@@ -45,7 +46,7 @@
       <aside class="hero-panel reveal" aria-label="个人概览">
         <div class="profile-intro">
           <img src="assets/avatar.png" alt="PC头像" class="hero-avatar" />
-          <div><div class="status-row"><span class="pulse"></span><span>PC'S WEBSITE / V7</span></div><strong class="profile-intro-name">PC的网站</strong></div>
+          <div><div class="status-row"><span class="pulse"></span><span>PC'S WEBSITE / V8</span></div><strong class="profile-intro-name">PC的网站</strong></div>
         </div>
         <div class="hero-metric">
           <span class="metric-label">CURRENT FOCUS</span>
@@ -121,6 +122,26 @@
             <strong id="player-style">RUN / CROSS / FINISH</strong>
           </div>
           <div id="attributes" class="attributes"></div>
+
+          <section class="career-profile" aria-label="足球生涯数据">
+            <div class="career-profile-head">
+              <div><span class="metric-label">CAREER TOTAL</span><strong id="career-goals">0</strong><small>生涯总进球</small></div>
+              <div class="career-side-stats">
+                <span><small>左脚</small><strong id="career-left">0</strong></span>
+                <span><small>右脚</small><strong id="career-right">0</strong></span>
+                <span><small>头球</small><strong id="career-header">0</strong></span>
+              </div>
+            </div>
+            <div class="position-fit-head"><span class="metric-label">POSITION FIT</span><span>擅长位置 · 展示评分</span></div>
+            <div id="position-heatmap" class="position-heatmap" aria-label="擅长位置热点图">
+              <div class="pitch-line pitch-half"></div>
+              <div class="pitch-circle"></div>
+              <div class="pitch-box pitch-box-top"></div>
+              <div class="pitch-goal pitch-goal-top"></div>
+              <div id="position-hotspots" class="position-hotspots"></div>
+            </div>
+            <p class="position-fit-note">位置评分为个人档案展示值，可在 data.js 中随比赛体验继续调整。</p>
+          </section>
         </div>
 
         <div class="season-panel reveal">
@@ -184,6 +205,20 @@
       <div id="work-grid" class="work-grid"></div>
     </section>
 
+    <section id="gaming" class="section block-section gaming-preview-section">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">GAME ARCHIVE</p>
+          <h2>游戏</h2>
+        </div>
+        <p>游戏截图、成就与视频单独整理。页面先分为 CS 与 3A 两个区域，后续可以继续增加其他游戏。</p>
+      </div>
+      <a class="gaming-entry-card reveal" href="games.html">
+        <div><span>PC / GAME ARCHIVE</span><h3>进入游戏页面</h3><p>CS · 3A · 截图 · 成就 · 视频</p></div>
+        <strong>→</strong>
+      </a>
+    </section>
+
     <section id="matches" class="section block-section">
       <div class="section-head reveal">
         <div>
@@ -222,7 +257,7 @@
     <span>Built for GitHub Pages.</span>
   </footer>
 
-  <script src="data.js?v=7.2.0.0"></script>
-  <script src="app.js?v=7.2.0.0"></script>
+  <script src="data.js?v=8.0.0"></script>
+  <script src="app.js?v=8.0.0"></script>
 </body>
 </html>

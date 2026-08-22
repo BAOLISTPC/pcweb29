@@ -127,6 +127,40 @@ function renderAttributes() {
   `).join('');
 }
 
+
+function getCareerFootStats() {
+  const foot = { left:0, right:0, header:0, other:0, unknown:0 };
+  data.matches.forEach(match => {
+    (match.goalEvents || []).forEach(goal => {
+      const name = (goal.foot || '').trim();
+      if (name === '左脚') foot.left += 1;
+      else if (name === '右脚') foot.right += 1;
+      else if (name === '头球') foot.header += 1;
+      else if (name === '其他') foot.other += 1;
+      else foot.unknown += 1;
+    });
+  });
+  return foot;
+}
+
+function renderCareerProfile() {
+  const goals = numericSum(data.matches.map(match => match.goals));
+  const foot = getCareerFootStats();
+  setText('#career-goals', goals);
+  setText('#career-left', foot.left);
+  setText('#career-right', foot.right);
+  setText('#career-header', foot.header);
+
+  const hotspotWrap = $('#position-hotspots');
+  if (!hotspotWrap) return;
+  const ratings = data.profile.positionRatings || [];
+  hotspotWrap.innerHTML = ratings.map(item => `
+    <div class="position-hotspot" style="left:${Number(item.x || 50)}%;top:${Number(item.y || 25)}%" title="${item.label || item.position} ${item.rating}">
+      <span>${item.position}</span><strong>${item.rating}</strong>
+    </div>
+  `).join('');
+}
+
 function getSeasonYears() {
   return [...new Set(data.matches.map(m => Number(m.date.slice(0, 4))))].sort((a,b) => b-a);
 }
@@ -574,6 +608,7 @@ function init() {
   initWorkFilters();
   renderWorks();
   renderAttributes();
+  renderCareerProfile();
   renderSeasonButtons();
   initSeasonMetricToggle();
   renderSeason(getSeasonYears()[0]);
