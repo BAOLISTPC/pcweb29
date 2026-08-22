@@ -40,3 +40,16 @@ profile.positionRatings
 ```
 
 3A 内容的 `section` 写成 `aaa`。
+
+
+## V8.1 年度球探报告
+
+足球赛季卡右上角新增年度球探报告入口。切换 2022–2026 年时，会自动切换到对应 PDF：
+
+- `reports/scout-report-2022.pdf`
+- `reports/scout-report-2023.pdf`
+- `reports/scout-report-2024.pdf`
+- `reports/scout-report-2025.pdf`
+- `reports/scout-report-2026.pdf`
+
+上传 GitHub 时请务必把整个 `reports/` 文件夹一起上传。

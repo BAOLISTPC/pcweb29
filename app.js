@@ -377,6 +377,22 @@ function renderSeason(year) {
   currentSeasonYear = Number(year);
   const season = getSeasonData(year);
   setText('#season-title', season.year);
+
+  const reportLink = $('#season-report-link');
+  const reportLabel = $('#season-report-label');
+  const report = SITE_DATA.scoutReports?.[String(season.year)];
+  if (reportLink && reportLabel) {
+    if (report?.url) {
+      reportLink.href = report.url;
+      reportLink.hidden = false;
+      reportLabel.textContent = report.label || `${season.year} 球探报告`;
+      reportLink.setAttribute('aria-label', `打开 ${season.year} 年度个人球探报告`);
+    } else {
+      reportLink.hidden = true;
+      reportLink.removeAttribute('href');
+    }
+  }
+
   setText('#season-status', season.status);
   setText('#season-apps', season.apps);
   setText('#season-goals', season.goals);

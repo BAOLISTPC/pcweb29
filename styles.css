@@ -1217,3 +1217,86 @@ button { font: inherit; }
   .game-section-intro p { grid-column:1; }
   .game-grid { grid-template-columns:1fr; }
 }
+
+
+/* ---------- V8.1 / Annual scouting report entry ---------- */
+.season-title-actions {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:14px;
+  padding-bottom:2px;
+}
+.season-report-link {
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-areas:"kicker arrow" "label arrow";
+  column-gap:18px;
+  row-gap:4px;
+  min-width:190px;
+  padding:15px 17px 14px;
+  border:1px solid color-mix(in srgb, var(--green) 72%, var(--line));
+  border-radius:16px;
+  background:color-mix(in srgb, var(--green-soft) 42%, var(--panel));
+  color:var(--text);
+  box-shadow:0 8px 24px color-mix(in srgb, var(--green) 10%, transparent);
+  transition:transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.season-report-link::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:14px;
+  bottom:14px;
+  width:3px;
+  border-radius:999px;
+  background:var(--green);
+}
+.season-report-link:hover {
+  transform:translateY(-2px);
+  border-color:var(--green);
+  background:color-mix(in srgb, var(--green) 18%, var(--panel));
+  box-shadow:0 12px 28px color-mix(in srgb, var(--green) 16%, transparent);
+}
+.season-report-link:active { transform:translateY(0) scale(.99); }
+.season-report-kicker {
+  grid-area:kicker;
+  color:var(--green-deep);
+  font-size:9px;
+  letter-spacing:.16em;
+}
+.season-report-link strong {
+  grid-area:label;
+  font-size:18px;
+  letter-spacing:-.03em;
+  line-height:1.15;
+}
+.season-report-arrow {
+  grid-area:arrow;
+  align-self:center;
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:#111;
+  font-size:16px;
+  font-weight:800;
+}
+[data-theme="dark"] .season-report-link {
+  background:color-mix(in srgb, var(--green) 10%, var(--panel));
+}
+@media (max-width: 760px) {
+  .season-title-row { align-items:flex-start; gap:22px; }
+  .season-title-actions { align-items:flex-end; }
+  .season-report-link { min-width:168px; padding:13px 14px 12px; }
+  .season-report-link strong { font-size:16px; }
+  .season-report-arrow { width:28px; height:28px; }
+}
+@media (max-width: 560px) {
+  .season-title-row { flex-direction:column; align-items:stretch; margin-top:38px; }
+  .season-title-actions { flex-direction:row; align-items:center; justify-content:space-between; }
+  .season-report-link { flex:1; min-width:0; }
+}

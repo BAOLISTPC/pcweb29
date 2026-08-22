@@ -43,6 +43,13 @@ window.SITE_DATA = {
       }
     ]
   },
+  "scoutReports": {
+    "2022": {"label":"2022 球探报告","url":"reports/scout-report-2022.pdf"},
+    "2023": {"label":"2023 球探报告","url":"reports/scout-report-2023.pdf"},
+    "2024": {"label":"2024 球探报告","url":"reports/scout-report-2024.pdf"},
+    "2025": {"label":"2025 球探报告","url":"reports/scout-report-2025.pdf"},
+    "2026": {"label":"2026 球探报告","url":"reports/scout-report-2026.pdf"}
+  },
   "works": [
     {
       "id": 1,
