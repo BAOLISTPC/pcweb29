@@ -6,7 +6,7 @@
   <meta name="description" content="PC的网站：生活、足球与工作长期个人档案" />
   <meta name="theme-color" content="#9DBB92" />
   <title>PC的网站</title>
-  <link rel="stylesheet" href="styles.css?v=8.3.0" />
+  <link rel="stylesheet" href="styles.css?v=8.4.0" />
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -142,6 +142,22 @@
             </div>
             <p class="position-fit-note">位置评分为个人档案展示值，可在 data.js 中随比赛体验继续调整。</p>
           </section>
+
+          <section class="career-trend-panel" aria-label="历年进球助攻与G+A趋势">
+            <div class="career-trend-head">
+              <div>
+                <span class="metric-label">CAREER TREND</span>
+                <h4>历年进攻趋势</h4>
+              </div>
+              <div class="career-trend-legend" aria-label="图例">
+                <span class="legend-goals"><i></i>进球</span>
+                <span class="legend-assists"><i></i>助攻</span>
+                <span class="legend-ga"><i></i>G+A</span>
+              </div>
+            </div>
+            <div id="career-trend-chart" class="career-trend-chart" aria-label="2022至2026年度进球、助攻与G+A折线图"></div>
+            <p class="career-trend-note">年度数据按逐场比赛记录累计。</p>
+          </section>
         </div>
 
         <div class="season-panel reveal">
@@ -264,7 +280,7 @@
     <span>Built for GitHub Pages.</span>
   </footer>
 
-  <script src="data.js?v=8.3.0"></script>
-  <script src="app.js?v=8.3.0"></script>
+  <script src="data.js?v=8.4.0"></script>
+  <script src="app.js?v=8.4.0"></script>
 </body>
 </html>

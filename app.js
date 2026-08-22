@@ -161,6 +161,68 @@ function renderCareerProfile() {
   `).join('');
 }
 
+function renderCareerTrendChart() {
+  const wrap = $('#career-trend-chart');
+  if (!wrap) return;
+
+  const years = [...new Set(data.matches.map(m => Number(m.date.slice(0, 4))))].sort((a,b) => a-b);
+  const rows = years.map(year => {
+    const goals = getDetailedAnnualValue(year, 'goals');
+    const assists = getDetailedAnnualValue(year, 'assists');
+    return { year, goals, assists, ga: goals + assists };
+  });
+  if (!rows.length) {
+    wrap.innerHTML = '<div class="empty-state">暂无年度趋势数据。</div>';
+    return;
+  }
+
+  const W = 460, H = 275;
+  const pad = { l: 38, r: 18, t: 30, b: 40 };
+  const chartW = W - pad.l - pad.r;
+  const chartH = H - pad.t - pad.b;
+  const maxValue = Math.max(...rows.flatMap(r => [r.goals, r.assists, r.ga]));
+  const yMax = Math.max(10, Math.ceil(maxValue / 10) * 10);
+  const tickStep = yMax <= 50 ? 10 : 20;
+  const ticks = [];
+  for (let v = 0; v <= yMax; v += tickStep) ticks.push(v);
+  if (ticks[ticks.length - 1] !== yMax) ticks.push(yMax);
+
+  const x = i => rows.length === 1 ? pad.l + chartW / 2 : pad.l + (chartW * i / (rows.length - 1));
+  const y = v => pad.t + chartH - (Number(v || 0) / yMax) * chartH;
+  const points = key => rows.map((r,i) => `${x(i).toFixed(1)},${y(r[key]).toFixed(1)}`).join(' ');
+
+  const valueLabel = (cx, cy, value, dy) => {
+    const ly = Math.max(12, Math.min(H - 18, cy + dy));
+    const width = String(value).length > 2 ? 28 : 23;
+    return `<g transform="translate(${cx.toFixed(1)},${ly.toFixed(1)})"><rect class="trend-value-bg" x="${-width/2}" y="-8" width="${width}" height="16" rx="8"></rect><text class="trend-value" x="0" y="0">${value}</text></g>`;
+  };
+
+  const grid = ticks.map(v => {
+    const yy = y(v);
+    return `<line class="trend-grid-line" x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}"></line><text class="trend-axis-text" x="${pad.l-9}" y="${yy+3}" text-anchor="end">${v}</text>`;
+  }).join('');
+
+  const yearLabels = rows.map((r,i) => `<text class="trend-year-text" x="${x(i)}" y="${H-15}" text-anchor="middle">${r.year}</text>`).join('');
+  const goalDots = rows.map((r,i) => `<circle class="trend-goals-dot" cx="${x(i)}" cy="${y(r.goals)}" r="4"></circle>${valueLabel(x(i), y(r.goals), r.goals, -14)}`).join('');
+  const assistDots = rows.map((r,i) => `<circle class="trend-assists-dot" cx="${x(i)}" cy="${y(r.assists)}" r="4"></circle>${valueLabel(x(i), y(r.assists), r.assists, 14)}`).join('');
+  const gaDots = rows.map((r,i) => `<circle class="trend-ga-dot" cx="${x(i)}" cy="${y(r.ga)}" r="4.5"></circle>${valueLabel(x(i), y(r.ga), r.ga, -16)}`).join('');
+
+  wrap.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="career-trend-title career-trend-desc" preserveAspectRatio="xMidYMid meet">
+      <title id="career-trend-title">历年进球、助攻与G+A趋势</title>
+      <desc id="career-trend-desc">${rows.map(r => `${r.year}年 ${r.goals}球 ${r.assists}助攻 ${r.ga}次G+A`).join('；')}</desc>
+      ${grid}
+      <polyline class="trend-ga-line" points="${points('ga')}"></polyline>
+      <polyline class="trend-goals-line" points="${points('goals')}"></polyline>
+      <polyline class="trend-assists-line" points="${points('assists')}"></polyline>
+      ${gaDots}
+      ${goalDots}
+      ${assistDots}
+      ${yearLabels}
+    </svg>
+  `;
+}
+
 function getSeasonYears() {
   return [...new Set(data.matches.map(m => Number(m.date.slice(0, 4))))].sort((a,b) => b-a);
 }
@@ -625,6 +687,7 @@ function init() {
   renderWorks();
   renderAttributes();
   renderCareerProfile();
+  renderCareerTrendChart();
   renderSeasonButtons();
   initSeasonMetricToggle();
   renderSeason(getSeasonYears()[0]);

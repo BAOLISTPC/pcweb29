@@ -1356,3 +1356,69 @@ button { font: inherit; }
   .game-category-intro { display:block; }
   .game-category-intro p { margin-top:8px; }
 }
+
+/* ---------- V8.4 / Career annual G-A-G+A line chart ---------- */
+.career-trend-panel {
+  position:relative;
+  z-index:1;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.career-trend-head {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:12px;
+}
+.career-trend-head .metric-label { margin:0 0 5px; }
+.career-trend-head h4 {
+  margin:0;
+  font-size:20px;
+  line-height:1.1;
+  letter-spacing:-.035em;
+}
+.career-trend-legend {
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:9px;
+}
+.career-trend-legend span { display:inline-flex; align-items:center; gap:5px; white-space:nowrap; }
+.career-trend-legend i { width:14px; height:3px; border-radius:999px; display:inline-block; }
+.career-trend-legend .legend-goals i { background:var(--green-deep); }
+.career-trend-legend .legend-assists i { background:#111; }
+.career-trend-legend .legend-ga i { background:#b5754a; }
+:root[data-theme="dark"] .career-trend-legend .legend-assists i { background:#f0f0eb; }
+.career-trend-chart {
+  width:100%;
+  min-height:275px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--green-soft) 28%,var(--panel)),var(--panel));
+  overflow:hidden;
+}
+.career-trend-chart svg { display:block; width:100%; height:auto; min-height:275px; }
+.career-trend-chart .trend-grid-line { stroke:var(--line); stroke-width:1; }
+.career-trend-chart .trend-axis-text { fill:var(--muted); font-size:9px; }
+.career-trend-chart .trend-year-text { fill:var(--muted); font-size:10px; font-weight:700; }
+.career-trend-chart .trend-goals-line { fill:none; stroke:var(--green-deep); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.career-trend-chart .trend-assists-line { fill:none; stroke:#111; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+.career-trend-chart .trend-ga-line { fill:none; stroke:#b5754a; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+:root[data-theme="dark"] .career-trend-chart .trend-assists-line { stroke:#f0f0eb; }
+.career-trend-chart .trend-goals-dot { fill:var(--green-deep); }
+.career-trend-chart .trend-assists-dot { fill:#111; }
+.career-trend-chart .trend-ga-dot { fill:#b5754a; }
+:root[data-theme="dark"] .career-trend-chart .trend-assists-dot { fill:#f0f0eb; }
+.career-trend-chart .trend-value-bg { fill:var(--panel); stroke:var(--line); stroke-width:1; }
+.career-trend-chart .trend-value { fill:var(--text); font-size:9px; font-weight:800; text-anchor:middle; dominant-baseline:central; }
+.career-trend-note { margin:8px 2px 0; color:var(--muted); font-size:9px; line-height:1.5; }
+@media (max-width: 680px) {
+  .career-trend-head { align-items:flex-start; flex-direction:column; }
+  .career-trend-legend { justify-content:flex-start; }
+  .career-trend-chart { min-height:245px; }
+  .career-trend-chart svg { min-height:245px; }
+}
