@@ -1,5 +1,5 @@
 /*
-  足球数据 V8.2 — 以用户最新比赛记录为基础
+  足球数据 V8.3 — 以用户最新比赛记录为基础
 
   V6 更新：
   - 球员姓名固定为“暴力中锋”。
@@ -256,19 +256,19 @@ window.SITE_DATA = {
       "raw": "3球 跑动8.53km",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -292,7 +292,7 @@ window.SITE_DATA = {
       "raw": "1球（左脚？） 跑动5.15km",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -1017,7 +1017,7 @@ window.SITE_DATA = {
       "raw": "1球（弧顶兜射）左边锋 跑动至少2km",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "弧顶兜射"
@@ -1131,13 +1131,13 @@ window.SITE_DATA = {
       "raw": "2球（右脚2卡卡） 跑动5.27km",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -1227,19 +1227,19 @@ window.SITE_DATA = {
       "raw": "3球（左脚1球右脚两球（1胸部停球凌空抽射） 跑动5.50km",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
@@ -1358,7 +1358,7 @@ window.SITE_DATA = {
       "raw": "1球1助攻（右脚） 跑动5km左右",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -1796,7 +1796,7 @@ window.SITE_DATA = {
       "raw": "1球2助攻（右脚）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -1949,7 +1949,7 @@ window.SITE_DATA = {
       "raw": "1球2助攻（右脚）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -2237,7 +2237,7 @@ window.SITE_DATA = {
       "raw": "1球2助攻（右脚）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -2446,7 +2446,7 @@ window.SITE_DATA = {
       "raw": "1球1助（右）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -2788,7 +2788,7 @@ window.SITE_DATA = {
       "raw": "1球2助（右脚）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -3014,19 +3014,19 @@ window.SITE_DATA = {
       "raw": "3球（右脚，一条龙）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
         },
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "见比赛备注"
@@ -3175,7 +3175,7 @@ window.SITE_DATA = {
       "raw": "1球1助（右）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -3361,7 +3361,7 @@ window.SITE_DATA = {
       "raw": "1球2助攻（1左1右）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"
@@ -3709,7 +3709,7 @@ window.SITE_DATA = {
       "raw": "1球2助攻（左脚）",
       "goalEvents": [
         {
-          "foot": "未记录",
+          "foot": "右脚",
           "minute": "未记录",
           "zone": "未记录",
           "type": "未单独记录"

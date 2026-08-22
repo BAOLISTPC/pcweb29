@@ -346,7 +346,7 @@ function renderSeasonMetricDetail(season) {
               <div class="goal-pie-center"><span>总进球</span><strong>${season.goals}</strong></div>
             </div>
             <div class="goal-pie-legend">
-              ${segments.map(seg => `<span><i class="${seg.cls}"></i>${seg.label} <strong>${seg.value}</strong></span>`).join('')}
+              ${segments.filter(seg => seg.value > 0).map(seg => `<span><i class="${seg.cls}"></i>${seg.label}</span>`).join('')}
             </div>
           </div>
           <div class="goal-composition-stats">

@@ -1089,7 +1089,7 @@ button { font: inherit; }
 .goal-pie-center span { color:var(--muted); font-size:10px; letter-spacing:.08em; }
 .goal-pie-center strong { margin-top:2px; font-size:38px; line-height:1; letter-spacing:-.06em; }
 .goal-pie-legend { display:grid; gap:9px; }
-.goal-pie-legend span { display:grid; grid-template-columns:10px 1fr auto; gap:8px; align-items:center; color:var(--muted); font-size:11px; }
+.goal-pie-legend span { display:grid; grid-template-columns:10px 1fr; gap:8px; align-items:center; color:var(--muted); font-size:11px; }
 .goal-pie-legend i { width:9px; height:9px; border-radius:50%; }
 .goal-pie-legend strong { color:var(--text); font-size:12px; }
 .goal-pie-legend i.foot-left { background:var(--foot-left); }
@@ -1302,6 +1302,7 @@ button { font: inherit; }
 }
 
 /* V8.2 — 游戏二级分类 */
+/* V8.3 — 未标明进球统一按右脚；修复进球构成图例数字溢出 */
 .game-subtabs {
   display:flex;
   gap:12px;
